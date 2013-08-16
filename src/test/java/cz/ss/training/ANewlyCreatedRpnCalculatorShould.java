@@ -1,24 +1,30 @@
 package cz.ss.training;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 
 import static org.junit.Assert.assertEquals;
 
-public class RpnCalculatorTest {
+public class ANewlyCreatedRpnCalculatorShould {
+		RpnCalculator calculator;
+
+	@Before
+	public void init(){
+		calculator = new RpnCalculator();
+
+	}
 
 	@Test
-	public void rpnCalculatorHas0InItsAccumulator(){
-		RpnCalculator calculator = new RpnCalculator();
+	public void have0InItsAccumulator(){
 		assertEquals(BigDecimal.ZERO, calculator.getAccumulator());
 
 	}
 
 	@Test
-	public void newCalculatorShouldAllowItsAccumulatorToBeSet(){
+	public void shouldAllowItsAccumulatorToBeSet(){
 		BigDecimal value = new BigDecimal(42);
-		RpnCalculator calculator = new RpnCalculator();
 		calculator.setAccumulator(value);
 		assertEquals(value, calculator.getAccumulator());
 	}
