@@ -23,10 +23,14 @@ public class ANewlyCreatedRpnCalculatorShould {
 	}
 
 	@Test
-	public void shouldAllowItsAccumulatorToBeSet(){
+	public void allowItsAccumulatorToBeSet(){
 		BigDecimal value = new BigDecimal(42);
 		calculator.setAccumulator(value);
 		assertEquals(value, calculator.getAccumulator());
 	}
 
+	@Test
+	public void notThrowAnExceptionWhenDropIsCalled(){
+		calculator.drop();
+	}
 }
