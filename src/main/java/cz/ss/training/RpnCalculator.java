@@ -22,4 +22,30 @@ public class RpnCalculator {
 	public void drop() {
 		operandStack.pop();
 	}
+
+	public void add() {
+		BigDecimal rhs = getAccumulator();
+		drop();
+		BigDecimal lhs = getAccumulator();
+		setAccumulator(lhs.add(rhs));
+	}
+
+	public void subtract() {
+		BigDecimal rhs = getAccumulator();
+		drop();
+		BigDecimal lhs = getAccumulator();
+		setAccumulator(lhs.subtract(rhs));
+	}
+
+	public void factorial() {
+		BigDecimal result = BigDecimal.ONE;
+		BigDecimal operand = getAccumulator();
+
+		while(operand.compareTo(BigDecimal.ONE) > 0){
+			result = result.multiply(operand);
+			operand = operand.subtract(BigDecimal.ONE);
+		}
+
+		setAccumulator(result);
+	}
 }

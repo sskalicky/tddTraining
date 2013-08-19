@@ -8,12 +8,11 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 public class ANewlyCreatedRpnCalculatorShould {
-		RpnCalculator calculator;
+	RpnCalculator calculator;
 
 	@Before
 	public void init(){
 		calculator = new RpnCalculator();
-
 	}
 
 	@Test
