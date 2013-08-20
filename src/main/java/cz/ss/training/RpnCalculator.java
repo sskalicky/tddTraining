@@ -23,21 +23,21 @@ public class RpnCalculator {
 		operandStack.pop();
 	}
 
-	public void add() {
+	private void add() {
 		BigDecimal rhs = getAccumulator();
 		drop();
 		BigDecimal lhs = getAccumulator();
 		setAccumulator(lhs.add(rhs));
 	}
 
-	public void subtract() {
+	private void subtract() {
 		BigDecimal rhs = getAccumulator();
 		drop();
 		BigDecimal lhs = getAccumulator();
 		setAccumulator(lhs.subtract(rhs));
 	}
 
-	public void factorial() {
+	private void factorial() {
 		BigDecimal result = BigDecimal.ONE;
 		BigDecimal operand = getAccumulator();
 
@@ -47,5 +47,17 @@ public class RpnCalculator {
 		}
 
 		setAccumulator(result);
+	}
+
+	public void execute(String operatorName) {
+		if("+".equals(operatorName)){
+			add();
+		} else if ("-".equals(operatorName)){
+			subtract();
+		} else if ("!".equals(operatorName)){
+			factorial();
+		} else {
+			throw new NoSuchOperator();
+		}
 	}
 }

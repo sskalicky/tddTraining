@@ -21,13 +21,13 @@ public class ARpnCalculatorWithTwoOperandsShould {
 
 	@Test
 	public void addTwoNumbersCorrectly(){
-		calculator.add();
+		calculator.execute("+");
 		assertEquals(new BigDecimal(7), calculator.getAccumulator());
 	}
 
 	@Test
 	public void subtractTwoNumbersCorrectly(){
-		calculator.subtract();
+		calculator.execute("-");
 		assertEquals(new BigDecimal(-1), calculator.getAccumulator());
 	}
 
