@@ -35,6 +35,8 @@ public class RpnCalculator {
 			operation = new SubtractOperation();
 		} else if ("!".equals(operatorName)){
 			operation = new FactorialOperation();
+		} else if ("*".equals(operatorName)) {
+			operation = new MultiplyOperation();
 		} else {
 			throw new NoSuchOperator();
 		}

@@ -2,12 +2,10 @@ package cz.ss.training;
 
 import java.math.BigDecimal;
 
-public class SubtractOperation implements MathOperation {
+public class SubtractOperation extends BinaryMathOperation {
 
-	public void execute(OperandStack operandStack){
-		BigDecimal rhs = operandStack.peek();
-		operandStack.pop();
-		BigDecimal lhs = operandStack.peek();
-		operandStack.replaceTop(lhs.subtract(rhs));
+	@Override
+	protected BigDecimal executeMathOperation(BigDecimal leftHandSide, BigDecimal rightHandSide) {
+		return leftHandSide.subtract(rightHandSide);
 	}
 }
