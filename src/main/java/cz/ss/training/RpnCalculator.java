@@ -1,7 +1,6 @@
 package cz.ss.training;
 
 import java.math.BigDecimal;
-import java.util.Stack;
 
 public class RpnCalculator {
 
@@ -23,41 +22,22 @@ public class RpnCalculator {
 		operandStack.pop();
 	}
 
-	private void add() {
-		BigDecimal rhs = getAccumulator();
-		drop();
-		BigDecimal lhs = getAccumulator();
-		setAccumulator(lhs.add(rhs));
-	}
-
-	private void subtract() {
-		BigDecimal rhs = getAccumulator();
-		drop();
-		BigDecimal lhs = getAccumulator();
-		setAccumulator(lhs.subtract(rhs));
-	}
-
-	private void factorial() {
-		BigDecimal result = BigDecimal.ONE;
-		BigDecimal operand = getAccumulator();
-
-		while(operand.compareTo(BigDecimal.ONE) > 0){
-			result = result.multiply(operand);
-			operand = operand.subtract(BigDecimal.ONE);
-		}
-
-		setAccumulator(result);
-	}
-
 	public void execute(String operatorName) {
+		MathOperation operation = findOperationByOperatorName(operatorName);
+		operation.execute(operandStack);
+	}
+
+	private MathOperation findOperationByOperatorName(String operatorName) {
+		MathOperation operation;
 		if("+".equals(operatorName)){
-			add();
+			operation = new AddOperation();
 		} else if ("-".equals(operatorName)){
-			subtract();
+			operation = new SubtractOperation();
 		} else if ("!".equals(operatorName)){
-			factorial();
+			operation = new FactorialOperation();
 		} else {
 			throw new NoSuchOperator();
 		}
+		return operation;
 	}
 }
