@@ -5,6 +5,15 @@ import java.math.BigDecimal;
 public class RpnCalculator {
 
 	private OperandStack operandStack = new OperandStack();
+	private MathOperatorFactory factory;
+
+	public RpnCalculator() {
+		this(new ShortNamedOperatorsMathOperatorFactory());
+	}
+
+	public RpnCalculator(MathOperatorFactory factory) {
+		this.factory = factory;
+	}
 
 	public BigDecimal getAccumulator() {
 		return operandStack.peek();
@@ -28,18 +37,6 @@ public class RpnCalculator {
 	}
 
 	private MathOperation findOperationByOperatorName(String operatorName) {
-		MathOperation operation;
-		if("+".equals(operatorName)){
-			operation = new AddOperation();
-		} else if ("-".equals(operatorName)){
-			operation = new SubtractOperation();
-		} else if ("!".equals(operatorName)){
-			operation = new FactorialOperation();
-		} else if ("*".equals(operatorName)) {
-			operation = new MultiplyOperation();
-		} else {
-			throw new NoSuchOperator();
-		}
-		return operation;
+		return factory.findOperationByOperatorName(operatorName);
 	}
 }
