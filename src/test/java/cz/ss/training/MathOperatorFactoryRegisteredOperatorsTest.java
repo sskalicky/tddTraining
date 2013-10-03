@@ -41,7 +41,11 @@ public class MathOperatorFactoryRegisteredOperatorsTest {
 
 	@Test
 	public void shouldBeAbleToFindDivide(){
-//		calculator.setAccumulator(BigDecimal.ONE);
 		mathOperatorFactory.findOperationByOperatorName("/");
+	}
+
+	@Test
+	public void shouldBeAbleToFindSum(){
+		mathOperatorFactory.findOperationByOperatorName("sum");
 	}
 }

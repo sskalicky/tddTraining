@@ -27,4 +27,8 @@ public class OperandStack {
 		if(!stack.isEmpty())
 			stack.pop();
 	}
+
+	public int size() {
+		return stack.size();
+	}
 }

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 
@@ -37,6 +38,16 @@ public class ABinaryMathOperationShould {
 
 		verify(mockOp, times(1)).executeMathOperation(lhs, rhs);
 
+	}
+
+	@Test
+	public void reduceStackSizeByOne(){
+		OperandStack stack = new OperandStack();
+		stack.push(BigDecimal.ONE);
+		stack.push(BigDecimal.ONE);
+		mockOp.execute(stack);
+
+		assertEquals(1, stack.size());
 	}
 
 	@Test

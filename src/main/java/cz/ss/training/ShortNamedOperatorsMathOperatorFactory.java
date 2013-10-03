@@ -18,6 +18,7 @@ public class ShortNamedOperatorsMathOperatorFactory implements MathOperatorFacto
 		operationByName.put("*", new MultiplyOperation());
 		operationByName.put("/", new DivideOperation());
 		operationByName.put("!", new FactorialOperation());
+		operationByName.put("sum", new SumOperation());
 	}
 
 	public MathOperation findOperationByOperatorName(String operatorName) {
