@@ -19,6 +19,7 @@ public class ShortNamedOperatorsMathOperatorFactory implements MathOperatorFacto
 		operationByName.put("/", new DivideOperation());
 		operationByName.put("!", new FactorialOperation());
 		operationByName.put("sum", new SumOperation());
+		operationByName.put("primeFactors", new PrimeFactorOperation());
 	}
 
 	public MathOperation findOperationByOperatorName(String operatorName) {

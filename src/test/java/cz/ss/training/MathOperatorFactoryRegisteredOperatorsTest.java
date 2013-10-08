@@ -48,4 +48,9 @@ public class MathOperatorFactoryRegisteredOperatorsTest {
 	public void shouldBeAbleToFindSum(){
 		mathOperatorFactory.findOperationByOperatorName("sum");
 	}
+
+	@Test
+	public void shouldBeAbleToFindPrimeFactors(){
+		mathOperatorFactory.findOperationByOperatorName("primeFactors");
+	}
 }
