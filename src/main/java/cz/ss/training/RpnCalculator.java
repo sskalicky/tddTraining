@@ -6,6 +6,7 @@ public class RpnCalculator {
 
 	private OperandStack operandStack = new OperandStack();
 	private MathOperatorFactory factory;
+	private CompositeMathOperator currentProgram;
 
 	public RpnCalculator() {
 		this(new ShortNamedOperatorsMathOperatorFactory());
@@ -38,5 +39,20 @@ public class RpnCalculator {
 
 	private MathOperation findOperationByOperatorName(String operatorName) {
 		return factory.findOperationByOperatorName(operatorName);
+	}
+
+	public void startProgram() {
+		currentProgram = new CompositeMathOperator();
+	}
+
+	public void addToProgram(String operatorName) {
+		MathOperation operation = findOperationByOperatorName(operatorName);
+		currentProgram.append(operation);
+	}
+
+	public void saveProgramAs(String operationName) {
+		factory.addOperatorNamed(operationName, currentProgram);
+
+
 	}
 }

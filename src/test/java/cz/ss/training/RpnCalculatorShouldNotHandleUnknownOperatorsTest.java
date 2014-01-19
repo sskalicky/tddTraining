@@ -9,6 +9,10 @@ public class RpnCalculatorShouldNotHandleUnknownOperatorsTest {
 		public MathOperation findOperationByOperatorName(String operatorName) {
 			throw new NoSuchOperator();
 		}
+
+		@Override
+		public void addOperatorNamed(String operatorName, MathOperation operation) {
+		}
 	}
 
 	@Test(expected = NoSuchOperator.class)

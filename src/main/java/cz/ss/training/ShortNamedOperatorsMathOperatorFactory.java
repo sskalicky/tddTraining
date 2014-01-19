@@ -29,4 +29,12 @@ public class ShortNamedOperatorsMathOperatorFactory implements MathOperatorFacto
 
 		return operation;
 	}
+
+	@Override
+	public void addOperatorNamed(String operatorName, MathOperation operation) {
+		if(operationByName.containsKey(operatorName)){
+			throw new OperatorNameAlreadyUsed();
+		}
+		operationByName.put(operatorName,operation);
+	}
 }

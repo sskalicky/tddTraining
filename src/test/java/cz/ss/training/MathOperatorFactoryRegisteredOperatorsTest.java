@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class MathOperatorFactoryRegisteredOperatorsTest {
 	private ShortNamedOperatorsMathOperatorFactory mathOperatorFactory;
@@ -52,5 +53,16 @@ public class MathOperatorFactoryRegisteredOperatorsTest {
 	@Test
 	public void shouldBeAbleToFindPrimeFactors(){
 		mathOperatorFactory.findOperationByOperatorName("primeFactors");
+	}
+
+	@Test
+	public void addingSameOperatorNameFails(){
+		mathOperatorFactory.addOperatorNamed("foo", new CompositeMathOperator());
+		try{
+			mathOperatorFactory.addOperatorNamed("foo", new CompositeMathOperator());
+			fail("should have thrown exception");
+		} catch(OperatorNameAlreadyUsed expected){
+
+		}
 	}
 }
